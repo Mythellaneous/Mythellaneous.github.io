@@ -164,6 +164,7 @@
         if (body.classList.contains("dark-mode")) {
           themeIcon.src = "images/moon.svg";
         } else {
+          body.classList.toggle("body");
           themeIcon.src = "images/sun.svg";
         }
       });
