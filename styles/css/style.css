@@ -1,47 +1,88 @@
+/* Resetting Defaults */
 * {
   padding: 0;
   margin: 0;
   vertical-align: baseline;
-  -ms-overflow-style: none; /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE, Edge, and Firefox */
   scrollbar-width: none; /* Firefox */
 }
 
-/* Hide scrollbar for Chrome, Safari, and Opera */
 *::-webkit-scrollbar {
-  display: none;
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }
 
+/* Body Styling */
 body {
-  background: linear-gradient(
-    to bottom right,
-    #d3d3d3,
-    #f0f0f0
-  ); /* Light grey gradient */
-  -webkit-font-smoothing: antialiased;
-  color: #151030; /* Changed text color for better contrast on light background */
+  background: linear-gradient(to bottom, #d3d3d3, #682992);
+  color: #151030;
   font-weight: 400;
   font-family: Oswald, sans-serif;
   padding: 4rem;
-  max-width: 1400px;
-  margin: auto;
+  text-align: center; /* Center all text in the body */
 }
 
-body .background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+
+.dark-mode {
+  background: linear-gradient(to bottom, #, #270335);
+  color: #eeeeee;
 }
 
-/* Remove the old background classes if they are not needed */
-@media screen and (max-width: 640px) {
-  body {
-    padding: 1.5em;
-  }
+.toggle-button:hover {
+  background-color: #e0e0e0; /* Darker shade on hover */
 }
 
+.toggle {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.toggle:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Toggle Button Styling */
+.toggle-container {
+  position: fixed; /* Adjust position as needed */
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+}
+
+.toggle-button {
+  width: 50px; /* Set the width of the button */
+  height: 50px; /* Set the height of the button */
+  border-radius: 50%; /* Make it a circle */
+  background-color: #f0f0f0; /* Light background for normal mode */
+  display: flex; /* Center the icon */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.toggle-button img {
+  width: 25px; /* Size of the icon */
+  height: 25px; /* Size of the icon */
+  transition: width 0.3s, height 0.3s; /* Smooth size transition */
+}
+
+.toggle-button span {
+  font-size: 12px; /* Font size for mode indicator */
+  color: white; /* Text color for mode indicator */
+  position: absolute;
+  left: 10px; /* Position for "Light" text */
+  transition: left 0.3s; /* Smooth transition for text */
+}
+
+/* Dark Mode Indicator */
+body.dark-mode .toggle-button span {
+  left: 35px; /* Position for "Dark" text */
+}
+
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -57,45 +98,60 @@ header a {
   margin-top: 1em;
 }
 
-header .header-section {
+/* Header Styling */
+.header-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin: 20px auto; /* Center the sections with auto margin */
 }
 
-header .header-section .title {
-  font-size: 52px;
+.header-section .title {
+  font-size: 4rem;
 }
 
 @media screen and (max-width: 640px) {
-  header .header-section .title {
+  .header-section .title {
     font-size: 36px;
   }
 }
 
-header .header-section .sub-title {
-  font-size: 28px;
-  font-weight: bolder;
+.header-section .sub-title {
+  font-size: 2rem;
 }
 
 @media screen and (max-width: 640px) {
-  header .header-section .sub-title {
+  .header-section .sub-title {
     font-size: 22px;
   }
 }
 
-header .header-section p {
+.header-section p {
   margin-top: 1em;
 }
 
-.title {
-  font-weight: bolder;
+/* Main Content */
+main {
+  max-width: 1200px; /* Set max width to 1200px */
+  width: 100%; /* Allow it to take full width of its container */
+  margin: 0 auto; /* Center the main content */
+  padding: 2rem; /* Add padding */
 }
 
+@media (max-width: 768px) {
+  main {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+}
+
+
+/* Links */
 a {
-  border: 4px solid #151030; /* Adjusted for better visibility */
-  height: max-content;
+  border: 4px solid #151030;
   padding: 0.5em 1.5em;
-  color: #151030; /* Adjusted for better visibility */
+  color: #151030;
   text-decoration: none;
   font-weight: bolder;
   white-space: nowrap;
@@ -107,7 +163,7 @@ a {
 a::after {
   content: "";
   width: 0;
-  background-color: #151030; /* Adjusted for better visibility */
+  background-color: #151030;
   height: 100%;
   position: absolute;
   top: 0;
@@ -117,26 +173,29 @@ a::after {
 }
 
 a:hover {
-  color: #fff; /* Change color on hover */
+  color: #fff;
 }
 
 a:hover::after {
   width: 100%;
 }
 
-hr {
-  margin-top: 3em;
-  border: none;
-  background-color: #151030; /* Adjusted for better visibility */
-  height: 2px;
-}
-
-.contact .title,
-.skills .title,
-.projects .title {
+/* Contact Section */
+.contact .title {
   font-size: 32px;
   margin-top: 2em;
   margin-bottom: 1.5em;
+  text-align: center;
+  margin: 20px auto; /* Center the sections with auto margin */
+}
+
+.projects {
+  margin: 20px auto; /* Center the sections with auto margin */
+}
+
+h1.title,
+h2 {
+  margin-bottom: 10px; /* Add some space below the titles */
 }
 
 div {
@@ -145,33 +204,56 @@ div {
   gap: 10px;
 }
 
-.skills {
-  margin: 20px 0; /* Add space around the skills section */
+/* Stack Section */
+.stack {
+  margin: 20px auto;
+  max-width: 1200px; /* Set max width to 1200px */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
 }
 
-.skills ul {
-  list-style: none; /* Remove bullets */
-  padding: 0; /* Remove default padding */
-  display: flex; /* Use flexbox for the ul */
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  margin-bottom: 20px; /* Space between skill groups */
+.stack h2 {
+  width: 100%; /* Full width for titles */
+  margin-bottom: 20px;
+  margin: 20px 0 10px; /* Margin around section titles */
+  text-align: center; /* Center text for titles */
 }
 
-.skills h2 {
-  width: 100%; /* Make the heading take the full width */
-  margin-bottom: 10px; /* Space below the heading */
+.stack ul {
+  margin: 20px 0 10px; /* Margin around section titles */
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+  display: flex; /* Use flexbox for icons */
+  flex-wrap: wrap; /* Allow wrapping */
+  justify-content: center; /* Center icons horizontally */
+  gap: 20px; /* Space between icons */
+  max-width: 100%; /* Ensure the list does not exceed the stack width */
 }
 
-.skills li {
-  display: flex; /* Each list item is a flex container */
-  align-items: center; /* Center items vertically */
-  margin-right: 15px; /* Space between each skill item */
-  font-size: 24px; /* Adjust font size */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stack ul {
+    flex-direction: column; /* Stack icons vertically on smaller screens */
+    align-items: center; /* Center items horizontally */
+  }
 }
 
-.skills li img {
-  width: 40px; /* Set the image width */
-  height: 40px; /* Set the image height */
-  object-fit: contain; /* Maintain aspect ratio */
-  margin-right: 8px; /* Space between the image and text */
+/* Tech Icon Container */
+.icon-container {
+  width: 100px; /* Set width to 100px */
+  height: 100px; /* Set height to 100px */
+  background-color: white; /* White background */
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  margin: 10px; /* Add some space around each icon */
+  border-radius: 10px; /* Optional: add some rounded corners */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+}
+
+.icon-container img {
+  width: 80%; /* Scale down icon size */
+  height: 80%; /* Scale down icon size */
+  margin: 10px; /* Optional: add space between icons */
 }
